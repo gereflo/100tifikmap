@@ -1,4 +1,5 @@
 import time
+import json
 
 from colored import fg, bg, attr
 from selenium import webdriver
@@ -11,6 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from geopy import geocoders
 import os
 import codecs
+
 
 # ----Clases----
 
@@ -41,10 +43,19 @@ class Cita:
         element = f'["{html}",{self.latitude},{self.longitude},"{self.lugar}"],'
         return element
 
+    # def to_dict(self):
+    #     return {"paperCitado": self.paperCitado, "autoresCitados": self.autoresCitados, "linkCitados": self.linkCitados,
+    #             "paper": self.paper, "autores": self.autores, "link": self.link, "lugar": self.lugar,
+    #             "latitude": self.latitude, "longitude": self.longitude}
+    #
+    # def toJSON(self):
+    #     return json.dumps(self, default=lambda o: o.__dict__,
+    #                       sort_keys=True, indent=4)
+
 
 # ----Functions-----
 
-def placesDisplay(place, abuscar, pais = False):
+def placesDisplay(place, abuscar, pais=False, retZero=False):
     contries = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica",
                 "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas",
                 "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan",
@@ -133,12 +144,24 @@ def placePoints(serchQuery):
     # print(location.raw)
 
     return [location.address, [location.latitude, location.longitude]]
+    # return [serchQuery, [10, 20]]
+
+
+# -------------------------
+def waiting(wait, mensaje=""):
+    for i in range(wait + 1):
+        idx = "Espere " + str(wait - i) + "mensaje"
+        # print('\r', idx, end='')
+        print("'\r{0}".format(idx), end='')
+        time.sleep(1)
+    print("", "\r", end='')
 
 
 # ---Variables----
 
 abuscar = ['University', 'Université', 'Institute', 'Research', 'Laboratory', 'Academy', 'Facility', 'Hospital']
 error = bg(1) + fg('white')
+highlight = fg(198)
 ok = fg(34)
 reset = attr('reset')
 # print(color + 'Hello World !!!' + reset)
@@ -146,15 +169,28 @@ reset = attr('reset')
 
 html = "<h1>%s</h1><a href='%s'><h4>Cite from: %s</h4></a><a href='%s'><h4>Cite: %s</h4></a><h5>Authors: $s</h5>"
 
+globalPlaces = []
+papersQueCitan = []
+
 # -----Main------
 
 try:
     os.remove("array.txt")
-    print("Archivo de Array creado Exitosamente")
-    os.remove("errors.txt")
 except FileNotFoundError:
     print("No se ha encontrado archivo de Array")
+try:
+    os.remove("errors.txt")
+except FileNotFoundError:
+    print("No se ha encontrado archivo de errores")
+try:
+    os.remove("places.json")
+except FileNotFoundError:
+    print("No se ha encontrado archivo de places")
 
+try:
+    os.remove("papersJson.json")
+except FileNotFoundError:
+    print("No se ha encontrado archivo de papersJson")
 
 chrome_options = OptionsC()
 firefox_options = OptionsF()
@@ -238,7 +274,7 @@ for tr in table:
         num = 1;
         for cite in citedIn:
             if num == 1:
-                num +=1
+                num += 1
                 continue
             print('---------Cita No.', num, '----------')
             print('Paper: ', cite[0] + cite[1])
@@ -256,7 +292,12 @@ for tr in table:
             places = []
             for li in itemList:
                 text = li.get_attribute('textContent').split(', ')
-                place = placesDisplay(text, abuscar, True)
+                place = placesDisplay(text, abuscar, False)
+                if isinstance(place, str):
+                    globalPlaces.append(place)
+                    paperQueCita = Cita(title, 'Autores Citados', linkPaper, cite[0], authorsString, cite[1], place, 0,
+                                        0)
+                    papersQueCitan.append(paperQueCita)
                 places.append(place)
                 # print('-----: ', place)
             try:
@@ -264,38 +305,82 @@ for tr in table:
             except:
                 print(error, '#########Error aqui###########', places, reset)
 
-            # print("-----: ", places)
-            for place in places:
-                if isinstance(place, list):
-                    print(error, '####', place, reset)
-                    f = codecs.open("errors.txt", "a+", "utf-8")
-                    f.write(str(place) + "\r")
-                    # print(paperQueCita.toArrayElement())
-                    f.close()
-                else:
-                    try:
-                        points = placePoints(place)
-                    except:
-                        print("Something went wrong")
-                        continue
-                    html = '<h1>' + title + '</h1>' + cite[0] + authorsString + place
-                    reference = [html, points[1][0], points[1][1], place]
-                    # print(reference)
-                    paperQueCita = Cita(title, 'Autores Citados', linkPaper, cite[0], authorsString, cite[1], place,
-                                        points[1][0], points[1][1])
-                    # print(ok, paperQueCita, reset)
-                    print(ok, '-------', place, points, reset)
-                    f = codecs.open("Array.txt", "a+", "utf-8")
-                    f.write(paperQueCita.toArrayElement() + "\r")
-                    # print(paperQueCita.toArrayElement())
-                    f.close()
+            print(len(globalPlaces), " Global places: ", globalPlaces)
+
+            # # print("-----: ", places)
+            # for place in places:
+            #     if isinstance(place, list):
+            #         print(error, '####', place, reset)
+            #         f = codecs.open("errors.txt", "a+", "utf-8")
+            #         f.write(str(place) + "\r")
+            #         # print(paperQueCita.toArrayElement())
+            #         f.close()
+            #     else:
+            #         try:
+            #             points = placePoints(place)
+            #         except:
+            #             print("Something went wrong")
+            #             continue
+            #         html = '<h1>' + title + '</h1>' + cite[0] + authorsString + place
+            #         reference = [html, points[1][0], points[1][1], place]
+            #         # print(reference)
+            #         paperQueCita = Cita(title, 'Autores Citados', linkPaper, cite[0], authorsString, cite[1], place,
+            #                             points[1][0], points[1][1])
+            #         # print(ok, paperQueCita, reset)
+            #         print(ok, '-------', place, points, reset)
+            #         f = codecs.open("Array.txt", "a+", "utf-8")
+            #         f.write(paperQueCita.toArrayElement() + "\r")
+            #         # print(paperQueCita.toArrayElement())
+            #         f.close()
             num += 1
         edge2.quit()
-    wait = 10
-    for i in range(wait + 1):
-        idx = "Espere " + str(wait - i) + " segundos, para no sobrecargar peticiones."
-        # print('\r', idx, end='')
-        print("'\r{0}".format(idx), end='')
-        time.sleep(1)
-    print("", "\r", end='')
+
+globalPlaces = list(set(globalPlaces))
+print(len(globalPlaces), globalPlaces)
+# f = codecs.open("places.json", "a+", "utf-8")
+# jsonStr = json.dumps(globalPlaces)
+# f.write(jsonStr + "\r")
+# f.close()
+# results = [obj.to_dict() for obj in papersQueCitan]
+# jsdata = json.dumps({"results": results})
+# f = codecs.open("papersJson.json", "a+", "utf-8")
+# f.write(jsdata + "\r")
+# f.close()
+
+f = codecs.open("array.js", "a+", "utf-8")
+f.write("const locations = [" + "\r")
+f.close()
+for place in globalPlaces:
+    print("------------------------------")
+    papersName = []
+    arrayString = "\t[\"<h1>" + place + "</h1><br>"
+    try:
+        points = placePoints(place)
+        print("Lugar: ", points)
+    except:
+        print("Something went wrong")
+        continue
+    for paper in papersQueCitan:
+        if paper.lugar == place:
+            # print(highlight, paper, reset)
+            if paper.paper not in papersName:
+                paper.longitude = points[1][0]
+                paper.latitude = points[1][1]
+                papersName.append(paper.paper)
+                print(ok, paper, reset)
+                arrayPaper = "<div style='border: thin solid grey'>"
+                arrayPaper = arrayPaper + "<a href='" + paper.linkCitados + "'><h4>Cite from: " + paper.paperCitado \
+                             + "</h4><a href='" + paper.link + "'><h4>Cite: " + paper.paper + "</h4></a>"
+                arrayPaper = arrayPaper.replace('"', "'")
+                arrayString = arrayString + arrayPaper
+                arrayPaper = arrayPaper + "</div>"
+    arrayString = arrayString + "\", " + str(points[1][0]) + ", " + str(points[1][1]) + ", \"" + place.replace('"', "'")+ "\"],"
+    f = codecs.open("array.js", "a+", "utf-8")
+    f.write(arrayString + "\r")
+    print(arrayString)
+    f.close()
+
+f = codecs.open("array.js", "a+", "utf-8")
+f.write("]" + "\r")
+f.close()
 edge.quit()

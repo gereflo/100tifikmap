@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67bf139a-d3f7-417e-85b3-f5fecb5a772c" name="Default Changelist" comment="" />
+    <list default="true" id="67bf139a-d3f7-417e-85b3-f5fecb5a772c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__main__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/100tifikmap" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1qh7ykMEGThcLBd2Gjor5MCtc4j" />
@@ -26,6 +30,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ComicDownloader 2.0" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -108,6 +113,9 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="679" y="206" key="#__main__" timestamp="1618029585136">
       <screen x="0" y="0" width="1920" height="1160" />
@@ -121,31 +129,35 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="690" y="327" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618107112308" />
+    <state x="614" y="171" key="CommitChangelistDialog2" timestamp="1618349220738">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="614" y="171" key="CommitChangelistDialog2/0.0.1920.1160@0.0.1920.1160" timestamp="1618349220738" />
     <state x="740" y="335" key="FileChooserDialogImpl" timestamp="1618110709902">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="740" y="335" key="FileChooserDialogImpl/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618110709902" />
     <state x="740" y="335" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1617520524384" />
-    <state width="1899" height="326" key="GridCell.Tab.0.bottom" timestamp="1618112336924">
+    <state width="1899" height="414" key="GridCell.Tab.0.bottom" timestamp="1618348187805">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618112336924" />
-    <state width="1899" height="412" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1617779606076" />
-    <state width="1899" height="326" key="GridCell.Tab.0.center" timestamp="1618112336924">
+    <state width="1899" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618113222277" />
+    <state width="1899" height="414" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1618348187805" />
+    <state width="1899" height="414" key="GridCell.Tab.0.center" timestamp="1618348187805">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="326" key="GridCell.Tab.0.center/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618112336924" />
-    <state width="1899" height="412" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1617779606075" />
-    <state width="1899" height="326" key="GridCell.Tab.0.left" timestamp="1618112336924">
+    <state width="1899" height="326" key="GridCell.Tab.0.center/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618113222277" />
+    <state width="1899" height="414" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1618348187805" />
+    <state width="1899" height="414" key="GridCell.Tab.0.left" timestamp="1618348187805">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="326" key="GridCell.Tab.0.left/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618112336924" />
-    <state width="1899" height="412" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1617779606075" />
-    <state width="1899" height="326" key="GridCell.Tab.0.right" timestamp="1618112336924">
+    <state width="1899" height="326" key="GridCell.Tab.0.left/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618113222277" />
+    <state width="1899" height="414" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1618348187805" />
+    <state width="1899" height="414" key="GridCell.Tab.0.right" timestamp="1618348187805">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1899" height="326" key="GridCell.Tab.0.right/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618112336924" />
-    <state width="1899" height="412" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1617779606076" />
+    <state width="1899" height="326" key="GridCell.Tab.0.right/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618113222277" />
+    <state width="1899" height="414" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1618348187805" />
     <state width="1899" height="396" key="GridCell.Tab.1.bottom" timestamp="1618004613730">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
@@ -167,13 +179,19 @@
     </state>
     <state x="461" y="222" key="SettingsEditor/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618029329011" />
     <state x="461" y="222" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1617520427239" />
-    <state x="769" y="497" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618112633550">
+    <state x="669" y="251" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1618340485763">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="669" y="251" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1160@0.0.1920.1160" timestamp="1618340485763" />
+    <state x="769" y="497" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618349763830">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="769" y="497" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618112633550" />
-    <state x="623" y="255" key="search.everywhere.popup" timestamp="1618029642848">
+    <state x="769" y="497" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1160@0.0.1920.1160" timestamp="1618349763830" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1618280576668">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="623" y="255" key="search.everywhere.popup/0.0.1920.1160/1920.0.1920.1040@0.0.1920.1160" timestamp="1618029642848" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1618280576668" />
   </component>
 </project>
